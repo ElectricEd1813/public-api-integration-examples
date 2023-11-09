@@ -4,6 +4,7 @@ import axios, { AxiosRequestConfig } from "axios";
 import refreshToken from "../oauth/requests/refreshToken";
 import { findExpiredTokenError } from "./utils";
 import { updateRequestAccessToken } from "./utils";
+import { InMemoryDatabase } from "../../../../lib";
 
 export default async (
   req: Request,
@@ -30,17 +31,14 @@ const tryRefreshAndRequest = async (
   res: Response,
   apiRequest: AxiosRequestConfig
 ) => {
-  const { refresh_token } = req.signedCookies.oauthData;
+  const { refresh_token } = InMemoryDatabase.first();
   const refreshTokenRequest = refreshToken(refresh_token);
 
   try {
     const response = await axios(refreshTokenRequest);
     const data = await response.data;
 
-    res.cookie("oauthData", data, {
-      httpOnly: true,
-      signed: true,
-    });
+    InMemoryDatabase.insert(data);
 
     await requestWithNewToken(
       res,

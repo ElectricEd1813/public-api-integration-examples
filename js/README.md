@@ -8,23 +8,24 @@ This application is a good example of:
  - how to make calls to Agendrix's API.
  - the refresh flow implementation, mandatory when using Agendrix's API (the access tokens have a TTL of **2 hours**).
 
-This application is **NOT**: 
+This application is **NOT**:
  - An example of the best programming practices for a web app. The goal here is really to give a good idea of what you need in order to integrate with the API, not what a web app should be like.
  - A project meant to be copied in a production environment.
 
 ### Play with the example
- 
+
 If you want to run the application yourself, follow these steps:
-1. Go to the [Developer Portal](https://developers.agendrix.com) to retrieve your application credentials.
-1. Make sure that either you are retrieving credentials from an approved application, or retrieving the sandox environment credentials.
-1. In [credentials.ts](./shared/credentials.ts), change the constants `clientID` and `clientSecret` for your application credentials.
-1. In the [Developer Portal](https://developers.agendrix.com) interface, add this web app home page - https://localhost:3000/home - to your credentials redirect uris. 
+1. Go to the [Developer Portal](https://developers.agendrix.com) to retrieve your sandbox credentials.
+1. In [credentials.ts](./shared/credentials.ts), change the constants `clientID` and `clientSecret` for your credentials.
+1. In the [Developer Portal](https://developers.agendrix.com) interface, add this web app home page - https://localhost:3000/home - to your credentials redirect uris.
 1. Start the app:
 
    ````bash
    yarn install
    yarn start
    ````
-    
+
+node version needs to be 16 or lower.
+
 Open https://localhost:3000 and enjoy!
- 
+

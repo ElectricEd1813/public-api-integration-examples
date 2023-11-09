@@ -8,7 +8,6 @@
     "@types/react-dom": "^16.9.8",
     "axios": "^0.21.0",
     "classnames": "^2.2.6",
-    "cookie-parser": "^1.4.5",
     "cors": "2.8.4",
     "customize-cra": "^1.0.0",
     "dotenv": "^8.2.0",

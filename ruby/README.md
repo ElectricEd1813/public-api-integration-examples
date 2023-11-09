@@ -29,5 +29,8 @@ If you want to run the application yourself, follow these steps:
     rails s -b 'ssl://localhost:3000?key=config/ssl/localhost.key&cert=config/ssl/localhost.crt'
     ````
 
+ruby 2.7.4
+bundler 2.4.22
+
 Open https://localhost:3000/, and enjoy!
 

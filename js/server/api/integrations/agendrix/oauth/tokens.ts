@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import axios from "axios";
 
 import token from "./requests/token";
+import { InMemoryDatabase } from "../../../../lib";
 
 export default async (req: Request, res: Response) => {
   const request = token(req.body.code);
@@ -10,10 +11,7 @@ export default async (req: Request, res: Response) => {
     const response = await axios(request);
     const data = await response.data;
 
-    res.cookie("oauthData", data, {
-      httpOnly: true,
-      signed: true,
-    });
+    InMemoryDatabase.insert(data);
 
     res.status(200).json({});
   } catch (e) {

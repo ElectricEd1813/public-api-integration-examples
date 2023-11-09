@@ -1,8 +1,6 @@
 import express from "express";
 import cors from "cors";
-import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
-// import path from "path";
 
 import api from "./api";
 
@@ -15,7 +13,6 @@ var corsOptions = {
 const app = express();
 app.use(cors(corsOptions));
 app.use(express.json());
-app.use(cookieParser(process.env.SIGNED_COOKIES_KEY));
 
 app.get("/health", (_, res) => {
   res.status(200).json({ message: "Everything's good!" });
