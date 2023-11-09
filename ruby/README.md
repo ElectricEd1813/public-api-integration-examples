@@ -15,13 +15,12 @@ This application is **NOT**:
  - A project meant to be copied in a production environment.
 
 ### Play with the example
- 
+
 If you want to run the application yourself, follow these steps:
 
-1. Go to the [Developer Portal](https://developers.agendrix.com) to retrieve your application credentials.
-1. Make sure that either you are retrieving credentials from an approved application, or retrieving the sandox environment credentials.
-1. In [credentials.rb](./lib/credentials.rb), change the constants `client_id` and `client_secret` for your application credentials.
-1. In the [Developer Portal](https://developers.agendrix.com) interface, add the app redirect url - https://localhost:3000/integrations/agendrix/oauth/redirect - to your credentials redirect uris. 
+1. Go to the [Developer Portal](https://developers.agendrix.com) to retrieve your sandbox credentials.
+1. In [credentials.rb](./lib/credentials.rb), change the constants `client_id` and `client_secret` for your credentials.
+1. In the [Developer Portal](https://developers.agendrix.com) interface, add the app redirect url - https://localhost:3000/integrations/agendrix/oauth/redirect - to your credentials redirect uris.
 1. Make sure you have everything setup to run a Ruby on Rails [app](https://www.tutorialspoint.com/ruby-on-rails/rails-installation.htm)
 1. Start the app:
 
@@ -31,4 +30,4 @@ If you want to run the application yourself, follow these steps:
     ````
 
 Open https://localhost:3000/, and enjoy!
- 
+

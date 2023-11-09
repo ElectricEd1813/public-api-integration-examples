@@ -15,7 +15,7 @@ module App
 
           body = response.body
           if response.success?
-            cookies.signed[:oauth_data] = { value: JSON.generate(body), httponly: true }
+            InMemoryDatabase.insert(JSON.generate(body))
           end
 
           redirect_to app_root_url, notice: response.success? ? "Success" : "Error: #{body["error_description"]}"

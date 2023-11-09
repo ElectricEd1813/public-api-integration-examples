@@ -3,7 +3,6 @@ module Services
     module Agendrix
       class APIProvider < Base
         def send(request_config)
-          configure_connection
           response = make_request(request_config)
 
           body = response.body
@@ -27,7 +26,7 @@ module Services
         protected
 
         def initialize_connection(**args)
-          @controller ||= args[:controller]
+          configure_connection
         end
 
         private
@@ -94,7 +93,7 @@ module Services
           raise RefreshTokenError, "Error: #{body[:error_description]}" unless response.success?
 
           # Store new oauth data and retry request
-          cookies.signed[:oauth_data] = { value: JSON.generate(body), httponly: true }
+          InMemoryDatabase.insert(JSON.generate(body))
           configure_connection(true)
           response = make_request(request_config)
           body = response.body
@@ -110,28 +109,24 @@ module Services
           [data, error]
         end
 
-        def cookies
-          @controller.retrieve_cookies
-        end
-
         def retrieve_access_token
-          oauth_data = cookies.signed[:oauth_data]
-          raise MissingCookieError, "The oauth_data cookie doesn't exist." if oauth_data.blank?
+          oauth_data = InMemoryDatabase.first
+          raise MissingTokenError, "No access token." if oauth_data.blank?
 
           access_token = JSON.parse(oauth_data)["access_token"]
-          raise InvalidCookieError, "The oauth_data cookie is invalid; it doesn't have the access_token key." if access_token.blank?
+          raise MissingTokenError, "No access token." if access_token.blank?
 
           access_token
         end
 
         def retrieve_refresh_token
-          oauth_data = cookies.signed[:oauth_data]
-          raise MissingCookieError, "The oauth_data cookie doesn't exist." if oauth_data.blank?
+          oauth_data = InMemoryDatabase.first
+          raise MissingTokenError, "No refresh token." if oauth_data.blank?
 
-          refresh_token = JSON.parse(oauth_data)["refresh_token"]
-          raise InvalidCookieError, "The oauth_data cookie is invalid; it doesn't have the refresh_token key." if refresh_token.blank?
+          access_token = JSON.parse(oauth_data)["refresh_token"]
+          raise MissingTokenError, "No refresh token." if access_token.blank?
 
-          refresh_token
+          access_token
         end
       end
     end

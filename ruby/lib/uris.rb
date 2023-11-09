@@ -1,11 +1,11 @@
 class URIS
   class << self
     def agendrix_api
-      "https://api.agendrix.com"
+      "https://api.sandbox.agendrix.net"
     end
 
     def oauth_provider
-      "https://app.agendrix.com/oauth"
+      "https://sandbox.agendrix.net/oauth"
     end
 
     def redirect_uri
