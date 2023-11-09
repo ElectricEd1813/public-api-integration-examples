@@ -29,10 +29,7 @@ module Services
     end
   end
 
-  class MissingCookieError < StandardError
-  end
-
-  class InvalidCookieError < StandardError
+  class MissingTokenError < StandardError
   end
 
   class RefreshTokenError < StandardError
