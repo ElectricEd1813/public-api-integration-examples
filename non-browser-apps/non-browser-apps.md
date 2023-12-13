@@ -9,7 +9,7 @@ You will find below the 2 ways to access our API natively.
 ## Using the Playground
 
 The first way is to use our [Playground](https://developers.agendrix.com/playground) to generate an access token and refresh token. From there you
-can use your script or a backend to refresh the tokens. How to do so is documented [here](https://developers.agendrix.com/documentation#section/OAuth-2.0/Exchange-the-Refresh-Token-for-a-New-Access-Token).
+can use your script or a backend to refresh the tokens. How to do so is documented [here](https://developers.agendrix.com/documentation#section/OAuth-2.0/Exchange-the-Refresh-Token-for-new-tokens).
 
 ## Using a specific redirect URI
 
