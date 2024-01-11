@@ -3,7 +3,7 @@
 // !!! Do NOT commit your secrets.
 
 const clientID = 18W7qLKhD-0YK4fvVaEbzZetlp5SNH3GsN2Zgy3XwOo;
-const clientSecret = RIdcu9mjI8FQGkoA5xkuTMUsqkt52AYlRNsfSAgBCsg;
+const clientSecret = "secret";
 const scopes = "read+write";
 
 export { clientID, clientSecret, scopes };
